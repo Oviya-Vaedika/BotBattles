@@ -50,11 +50,10 @@ if game_choice == "Tic-Tac-Toe":
     st.info(st.session_state.ttt_chat)
     st.write("---")
 
-       def check_ttt_win(b, p):
-        wins = [, [3, 4, 5], [6, 7, 8], # Horizontal wins, [1, 4, 7], [2, 5, 8], # Vertical wins, [2, 4, 6]             # Diagonal wins
+    def check_ttt_win(b, p):
+        wins = [, [3, 4, 5], [6, 7, 8],  # Horizontal wins, [1, 4, 7], [2, 5, 8],  # Vertical wins, [2, 4, 6]              # Diagonal wins
         ]
         return any(all(b[i] == p for i in c) for c in wins)
-
 
     def ttt_click(idx):
         if st.session_state.ttt_board[idx] == " " and not st.session_state.ttt_over:
@@ -156,7 +155,7 @@ elif game_choice == "Hangman":
             )
 
 # =====================================================================
-# GAME 3: CHESS (Fully Functional Visual 8x8 Grid)
+# GAME 3: CHESS
 # =====================================================================
 elif game_choice == "Chess":
     if "chess_board" not in st.session_state:
