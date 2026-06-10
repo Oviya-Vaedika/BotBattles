@@ -51,7 +51,11 @@ if game_choice == "Tic-Tac-Toe":
     st.write("---")
 
     def check_ttt_win(b, p):
-        wins = [, [3, 4, 5], [6, 7, 8],  # Horizontal wins, [1, 4, 7], [2, 5, 8],  # Vertical wins, [2, 4, 6]              # Diagonal wins
+        # Cleanly structured list of 8 winning layout combinations
+        wins = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],  # Horizontal wins
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],  # Vertical wins
+            [0, 4, 8], [2, 4, 6]              # Diagonal wins
         ]
         return any(all(b[i] == p for i in c) for c in wins)
 
@@ -79,7 +83,7 @@ if game_choice == "Tic-Tac-Toe":
             else:
                 st.session_state.ttt_chat = ask_gemini("Tic-Tac-Toe", str(st.session_state.ttt_board), f"placed an X on square index {idx}")
 
-    # Render 3x3 Clickable Grid
+    # Render 3x3 Clickable Grid Layout
     rows = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
     for row in rows:
         cols = st.columns(3)
@@ -208,7 +212,7 @@ elif game_choice == "Chess":
     
     board = st.session_state.chess_board
     
-    # Draw the visual board from Rank 8 down to Rank 1
+    # Draw the visual board layout from Rank 8 down to Rank 1
     for rank in reversed(range(8)):
         cols = st.columns(8)
         for file in range(8):
